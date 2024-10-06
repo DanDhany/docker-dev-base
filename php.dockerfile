@@ -31,14 +31,14 @@ RUN docker-php-ext-install opcache
 COPY --from=composer:lts /usr/bin/composer /usr/bin/composer
 
 # install npm
-# RUN apk add --no-cache nodejs npm
+RUN apk add --no-cache nodejs npm
 
 # install pdo
-# RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql
 
 # insatll mysqli php ext
-# RUN docker-php-ext-install mysqli \
-#     && docker-php-ext-enable mysqli
+RUN docker-php-ext-install mysqli \
+    && docker-php-ext-enable mysqli
 
 # install mysql php ext
 # RUN docker-php-ext-install mysql \
@@ -56,14 +56,14 @@ COPY --from=composer:lts /usr/bin/composer /usr/bin/composer
 #     && apk del postgresql-dev
 
 # install zip
-# RUN apk add --no-cache zip libzip-dev
-# RUN docker-php-ext-configure zip
-# RUN docker-php-ext-install zip
+RUN apk add --no-cache zip libzip-dev
+RUN docker-php-ext-configure zip
+RUN docker-php-ext-install zip
 
 # install exif
-# RUN docker-php-ext-configure exif
-# RUN docker-php-ext-install exif
-# RUN docker-php-ext-enable exif
+RUN docker-php-ext-configure exif
+RUN docker-php-ext-install exif
+RUN docker-php-ext-enable exif
 
 # install gd
 # RUN apk add --no-cache freetype-dev libpng libpng-dev jpeg-dev libjpeg-turbo-dev \
@@ -80,9 +80,9 @@ COPY --from=composer:lts /usr/bin/composer /usr/bin/composer
 #     && apk del libpng-dev
 
 # install intl
-# RUN apk add --no-cache icu-dev \ 
-#     && docker-php-ext-configure intl \ 
-#     && docker-php-ext-install intl
+RUN apk add --no-cache icu-dev \ 
+    && docker-php-ext-configure intl \ 
+    && docker-php-ext-install intl
 
 # install redis
 # RUN mkdir -p /usr/src/php/ext/redis \
